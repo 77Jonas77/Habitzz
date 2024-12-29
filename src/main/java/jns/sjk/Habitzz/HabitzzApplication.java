@@ -8,7 +8,6 @@ public class HabitzzApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HabitzzApplication.class, args);
-
 	}
 
 }
