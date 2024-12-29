@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models;
+package jns.sjk.Habitzz.Models.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -11,10 +11,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "przynaleznosc", schema = "HabitzzDb")
-public class Przynaleznosc {
+@Table(name = "uzytkownik_grupa", schema = "HabitzzDb")
+public class UzytkownikGrupa {
     @EmbeddedId
-    private PrzynaleznoscId id;
+    private UzytkownikGrupaId id;
 
     @MapsId("uzytkownikId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

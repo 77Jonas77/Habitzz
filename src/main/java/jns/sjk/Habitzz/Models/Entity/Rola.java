@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models;
+package jns.sjk.Habitzz.Models.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,15 +12,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "jednostka_czasu", schema = "HabitzzDb")
-public class JednostkaCzasu {
+@Table(name = "rola", schema = "HabitzzDb")
+public class Rola {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 20)
+    @Size(max = 30)
     @NotNull
-    @Column(name = "nazwa", nullable = false, length = 20)
+    @Column(name = "nazwa", nullable = false, length = 30)
     private String nazwa;
 
 }

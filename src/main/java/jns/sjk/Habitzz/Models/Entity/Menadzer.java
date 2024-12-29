@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models;
+package jns.sjk.Habitzz.Models.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models;
+package jns.sjk.Habitzz.Models.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,4 +31,12 @@ public class Grupa {
     @Column(name = "opis", length = 200)
     private String opis;
 
+    @ManyToMany
+    @JoinTable(name = "nawyk_grupa",
+            joinColumns = @JoinColumn(name = "grupa_id"),
+            inverseJoinColumns = @JoinColumn(name = "nawyk_id"))
+    private List<Nawyk> nawyki;
+
+    @ManyToMany(mappedBy = "grupy")
+    private List<Uzytkownik> uzytkownicy;
 }

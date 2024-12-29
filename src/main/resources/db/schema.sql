@@ -1,6 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-12-29 14:56:43.452
---
+-- Last modification date: 2024-12-29 23:14:52.382
 
 -- tables
 -- Table: administrator
@@ -39,28 +38,26 @@ CREATE TABLE nawyk (
                        nazwa nvarchar(50)  NOT NULL,
                        czestotliwosc int  NOT NULL,
                        data_rozpoczecia date  NOT NULL,
-                       jednostkaczasu_id int  NOT NULL,
+                       jednostka_czasu_id int  NOT NULL,
                        interwal int  NOT NULL,
                        opis varchar(100)  NULL,
                        CONSTRAINT nawyk_pk PRIMARY KEY (id)
 );
 
--- Table: przynaleznosc
-CREATE TABLE przynaleznosc (
-                               uzytkownik_id int  NOT NULL,
-                               grupa_id int  NOT NULL,
-                               data_dolaczenia date  NOT NULL,
-                               nazwa_uzytkownika_w_grupie nvarchar(50)  NULL,
-                               CONSTRAINT przynaleznosc_pk PRIMARY KEY (uzytkownik_id,grupa_id)
+-- Table: nawyk_grupa
+CREATE TABLE nawyk_grupa (
+                             nawyk_id int  NOT NULL,
+                             grupa_id int  NOT NULL,
+                             data_zakonczenia date  NULL,
+                             CONSTRAINT nawyk_grupa_pk PRIMARY KEY (nawyk_id,grupa_id)
 );
 
--- Table: przypisanie_nawyku
-CREATE TABLE przypisanie_nawyku (
-                                    id int  NOT NULL AUTO_INCREMENT,
-                                    nawyk_id int  NOT NULL,
-                                    uzytkownik_id int  NULL,
-                                    grupa_id int  NULL,
-                                    CONSTRAINT przypisanie_nawyku_pk PRIMARY KEY (id)
+-- Table: nawyk_uzytkownik
+CREATE TABLE nawyk_uzytkownik (
+                                  uzytkownik_id int  NOT NULL,
+                                  nawyk_id int  NOT NULL,
+                                  data_zakonczenia date  NULL,
+                                  CONSTRAINT nawyk_uzytkownik_pk PRIMARY KEY (uzytkownik_id,nawyk_id)
 );
 
 -- Table: rola
@@ -82,48 +79,59 @@ CREATE TABLE uzytkownik (
                             CONSTRAINT uzytkownik_pk PRIMARY KEY (id)
 );
 
+-- Table: uzytkownik_grupa
+CREATE TABLE uzytkownik_grupa (
+                                  uzytkownik_id int  NOT NULL,
+                                  grupa_id int  NOT NULL,
+                                  data_dolaczenia date  NOT NULL,
+                                  nazwa_uzytkownika_w_grupie nvarchar(50)  NULL,
+                                  CONSTRAINT uzytkownik_grupa_pk PRIMARY KEY (uzytkownik_id,grupa_id)
+);
+
 -- foreign keys
--- Reference: administrator_uzytkownik (table: administrator)
-ALTER TABLE administrator ADD CONSTRAINT administrator_uzytkownik FOREIGN KEY administrator_uzytkownik (id)
+-- Reference: Administrator_Uzytkownik (table: administrator)
+ALTER TABLE administrator ADD CONSTRAINT Administrator_Uzytkownik FOREIGN KEY Administrator_Uzytkownik (id)
     REFERENCES uzytkownik (id);
 
--- Reference: grupa_menadzer (table: grupa)
-ALTER TABLE grupa ADD CONSTRAINT grupa_menadzer FOREIGN KEY grupa_menadzer (menadzer_id)
+-- Reference: Grupa_Menadzer (table: grupa)
+ALTER TABLE grupa ADD CONSTRAINT Grupa_Menadzer FOREIGN KEY Grupa_Menadzer (menadzer_id)
     REFERENCES menadzer (uzytkownik_id);
 
--- Reference: menadzer_uzytkownik (table: menadzer)
-ALTER TABLE menadzer ADD CONSTRAINT menadzer_uzytkownik FOREIGN KEY menadzer_uzytkownik (uzytkownik_id)
+-- Reference: Menadzer_Uzytkownik (table: menadzer)
+ALTER TABLE menadzer ADD CONSTRAINT Menadzer_Uzytkownik FOREIGN KEY Menadzer_Uzytkownik (uzytkownik_id)
     REFERENCES uzytkownik (id);
 
--- Reference: nawyk_jednostkaczasu (table: nawyk)
-ALTER TABLE nawyk ADD CONSTRAINT nawyk_jednostkaczasu FOREIGN KEY nawyk_jednostkaczasu (jednostkaczasu_id)
+-- Reference: Nawyk_JednostkaCzasu (table: nawyk)
+ALTER TABLE nawyk ADD CONSTRAINT Nawyk_JednostkaCzasu FOREIGN KEY Nawyk_JednostkaCzasu (jednostka_czasu_id)
     REFERENCES jednostka_czasu (id);
 
--- Reference: przynaleznosc_grupa (table: przynaleznosc)
-ALTER TABLE przynaleznosc ADD CONSTRAINT przynaleznosc_grupa FOREIGN KEY przynaleznosc_grupa (grupa_id)
+-- Reference: Przynaleznosc_Grupa (table: uzytkownik_grupa)
+ALTER TABLE uzytkownik_grupa ADD CONSTRAINT Przynaleznosc_Grupa FOREIGN KEY Przynaleznosc_Grupa (grupa_id)
     REFERENCES grupa (id);
 
--- Reference: przynaleznosc_uzytkownik (table: przynaleznosc)
-ALTER TABLE przynaleznosc ADD CONSTRAINT przynaleznosc_uzytkownik FOREIGN KEY przynaleznosc_uzytkownik (uzytkownik_id)
+-- Reference: Przynaleznosc_Uzytkownik (table: uzytkownik_grupa)
+ALTER TABLE uzytkownik_grupa ADD CONSTRAINT Przynaleznosc_Uzytkownik FOREIGN KEY Przynaleznosc_Uzytkownik (uzytkownik_id)
     REFERENCES uzytkownik (id);
 
--- Reference: przypisannenawyku_grupa (table: przypisanie_nawyku)
-ALTER TABLE przypisanie_nawyku ADD CONSTRAINT przypisannenawyku_grupa FOREIGN KEY przypisannenawyku_grupa (grupa_id)
-    REFERENCES grupa (id);
-
--- Reference: przypisannenawyku_nawyku (table: przypisanie_nawyku)
-ALTER TABLE przypisanie_nawyku ADD CONSTRAINT przypisannenawyku_nawyku FOREIGN KEY przypisannenawyku_nawyku (nawyk_id)
-    REFERENCES nawyk (id);
-
--- Reference: przypisannenawyku_uzytkownik (table: przypisanie_nawyku)
-ALTER TABLE przypisanie_nawyku ADD CONSTRAINT przypisannenawyku_uzytkownik FOREIGN KEY przypisannenawyku_uzytkownik (uzytkownik_id)
-    REFERENCES uzytkownik (id);
-
--- Reference: uzytkownik_rola (table: uzytkownik)
-ALTER TABLE uzytkownik ADD CONSTRAINT uzytkownik_rola FOREIGN KEY uzytkownik_rola (rola_id)
+-- Reference: Uzytkownik_Rola (table: uzytkownik)
+ALTER TABLE uzytkownik ADD CONSTRAINT Uzytkownik_Rola FOREIGN KEY Uzytkownik_Rola (rola_id)
     REFERENCES rola (id);
 
--- GRANT ALL PRIVILEGES ON habitzzdb.* TO 'user'@'%' IDENTIFIED BY 'password';
--- FLUSH PRIVILEGES;
+-- Reference: nawykGrupa_grupa (table: nawyk_grupa)
+ALTER TABLE nawyk_grupa ADD CONSTRAINT nawykGrupa_grupa FOREIGN KEY nawykGrupa_grupa (grupa_id)
+    REFERENCES grupa (id);
+
+-- Reference: nawykGrupa_nawyk (table: nawyk_grupa)
+ALTER TABLE nawyk_grupa ADD CONSTRAINT nawykGrupa_nawyk FOREIGN KEY nawykGrupa_nawyk (nawyk_id)
+    REFERENCES nawyk (id);
+
+-- Reference: nawykUzytkownik_nawyk (table: nawyk_uzytkownik)
+ALTER TABLE nawyk_uzytkownik ADD CONSTRAINT nawykUzytkownik_nawyk FOREIGN KEY nawykUzytkownik_nawyk (nawyk_id)
+    REFERENCES nawyk (id);
+
+-- Reference: nawykUzytkownik_uzytkownik (table: nawyk_uzytkownik)
+ALTER TABLE nawyk_uzytkownik ADD CONSTRAINT nawykUzytkownik_uzytkownik FOREIGN KEY nawykUzytkownik_uzytkownik (uzytkownik_id)
+    REFERENCES uzytkownik (id);
 
 -- End of file.
+
