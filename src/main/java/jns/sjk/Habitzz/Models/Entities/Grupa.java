@@ -40,4 +40,5 @@ public class Grupa {
 
     @ManyToMany(mappedBy = "grupy")
     private List<Uzytkownik> uzytkownicy;
+
 }

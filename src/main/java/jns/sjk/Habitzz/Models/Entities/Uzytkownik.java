@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -26,7 +25,8 @@ public class Uzytkownik {
 
     @NotNull
     @Column(name = "haslo", nullable = false)
-    private Integer haslo;
+    @Size(max = 50)
+    private String haslo;
 
     @Size(max = 50)
     @NotNull

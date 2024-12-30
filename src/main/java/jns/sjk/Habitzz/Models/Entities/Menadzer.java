@@ -28,4 +28,5 @@ public class Menadzer {
 
     @OneToMany(mappedBy = "menadzer", cascade = CascadeType.REMOVE)
     private List<Grupa> grupy;
+
 }

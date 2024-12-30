@@ -10,11 +10,11 @@ INSERT INTO jednostka_czasu (nazwa) VALUES ('Month');
 
 -- Wstawienie użytkowników
 INSERT INTO uzytkownik (nazwa_uzytkownika, haslo, imie, nazwisko, data_urodzenia, rola_id)
-VALUES ('admin', 123456, 'John', 'Doe', '1980-01-01', 1);
+VALUES ('admin', "123456", 'John', 'Doe', '1980-01-01', 1);
 INSERT INTO uzytkownik (nazwa_uzytkownika, haslo, imie, nazwisko, data_urodzenia, rola_id)
-VALUES ('mjackson', 234567, 'Michael', 'Jackson', '1990-02-02', 2);
+VALUES ('mjackson', "234567", 'Michael', 'Jackson', '1990-02-02', 2);
 INSERT INTO uzytkownik (nazwa_uzytkownika, haslo, imie, nazwisko, data_urodzenia, rola_id)
-VALUES ('awilliams', 345678, 'Anna', 'Williams', '1995-03-15', 3);
+VALUES ('awilliams', "345678", 'Anna', 'Williams', '1995-03-15', 3);
 
 -- Wstawienie administratora
 INSERT INTO administrator (data_utworzenia)

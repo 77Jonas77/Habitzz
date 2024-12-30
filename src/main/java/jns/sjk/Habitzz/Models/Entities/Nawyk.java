@@ -49,4 +49,5 @@ public class Nawyk {
             joinColumns = @JoinColumn(name = "nawyk_id"),
             inverseJoinColumns = @JoinColumn(name = "uzytkownik_id"))
     private List<Uzytkownik> uzytkownicy;
+
 }

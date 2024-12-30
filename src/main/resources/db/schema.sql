@@ -72,7 +72,7 @@ CREATE TABLE rola (
 CREATE TABLE uzytkownik (
                             id int  NOT NULL AUTO_INCREMENT,
                             nazwa_uzytkownika nvarchar(50)  NOT NULL,
-                            haslo int  NOT NULL,
+                            haslo nvarchar(50)  NOT NULL,
                             imie nvarchar(50)  NOT NULL,
                             nazwisko nvarchar(50)  NOT NULL,
                             data_urodzenia date  NOT NULL,
