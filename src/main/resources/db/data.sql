@@ -25,10 +25,10 @@ INSERT INTO menadzer (uzytkownik_id, nazwa_firmy)
 VALUES (2, 'TechCorp');
 
 -- Wstawienie grup
-INSERT INTO grupa (menadzer_id, data_utworzenia, opis)
-VALUES (2, '2024-12-29', 'Project management group');
-INSERT INTO grupa (menadzer_id, data_utworzenia, opis)
-VALUES (2, '2024-12-29', 'Testing group');
+INSERT INTO grupa (menadzer_id, data_utworzenia, nazwa_grupy, opis)
+VALUES (2, '2024-12-29', "Grupa PM",'Project management group');
+INSERT INTO grupa (menadzer_id, data_utworzenia, nazwa_grupy, opis)
+VALUES (2, '2024-12-29',"Testing Group", 'Testing group');
 
 -- Wstawienie przynależności do grup
 INSERT INTO uzytkownik_grupa (uzytkownik_id, grupa_id, data_dolaczenia, nazwa_uzytkownika_w_grupie)

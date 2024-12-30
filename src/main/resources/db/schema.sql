@@ -13,6 +13,7 @@ CREATE TABLE administrator (
 CREATE TABLE grupa (
                        id int  NOT NULL AUTO_INCREMENT,
                        menadzer_id int  NOT NULL,
+                       nazwa_grupy nvarchar(50)  NOT NULL,
                        data_utworzenia date  NOT NULL,
                        opis nvarchar(200)  NULL,
                        CONSTRAINT grupa_pk PRIMARY KEY (id)
