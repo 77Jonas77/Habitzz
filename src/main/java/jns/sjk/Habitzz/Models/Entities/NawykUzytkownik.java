@@ -1,6 +1,7 @@
-package jns.sjk.Habitzz.Models.Entity;
+package jns.sjk.Habitzz.Models.Entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +24,10 @@ public class NawykUzytkownik {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "nawyk_id", nullable = false)
     private Nawyk nawyk;
+
+    @NotNull
+    @Column(name = "data_rozpoczecia", nullable = false)
+    private LocalDate dataRozpoczecia;
 
     @Column(name = "data_zakonczenia")
     private LocalDate dataZakonczenia;

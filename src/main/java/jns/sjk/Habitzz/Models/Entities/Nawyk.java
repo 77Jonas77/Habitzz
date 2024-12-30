@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models.Entity;
+package jns.sjk.Habitzz.Models.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -15,6 +15,7 @@ import java.util.List;
 @Table(name = "nawyk", schema = "HabitzzDb")
 public class Nawyk {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -26,10 +27,6 @@ public class Nawyk {
     @NotNull
     @Column(name = "czestotliwosc", nullable = false)
     private Integer czestotliwosc;
-
-    @NotNull
-    @Column(name = "data_rozpoczecia", nullable = false)
-    private LocalDate dataRozpoczecia;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

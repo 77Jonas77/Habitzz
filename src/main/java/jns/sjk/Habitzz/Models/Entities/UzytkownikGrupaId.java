@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models.Entity;
+package jns.sjk.Habitzz.Models.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

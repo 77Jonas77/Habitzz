@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models.Entity;
+package jns.sjk.Habitzz.Models.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -17,9 +17,9 @@ public class Administrator {
     private Integer id;
 
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id", nullable = false)
-    private Uzytkownik uzytkownik;
+    private Uzytkownik uzytkownikAdmin;
 
     @NotNull
     @Column(name = "data_utworzenia", nullable = false)

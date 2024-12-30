@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models.Entity;
+package jns.sjk.Habitzz.Models.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -15,6 +15,7 @@ import java.util.List;
 @Table(name = "grupa", schema = "HabitzzDb")
 public class Grupa {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 

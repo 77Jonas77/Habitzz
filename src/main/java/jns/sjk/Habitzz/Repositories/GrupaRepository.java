@@ -1,18 +1,7 @@
 package jns.sjk.Habitzz.Repositories;
 
-import jns.sjk.Habitzz.Models.Entity.Grupa;
-import org.springframework.data.repository.ListCrudRepository;
+import jns.sjk.Habitzz.Models.Entities.Grupa;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface GrupaRepository extends ListCrudRepository<Grupa, Integer> {
-    @Override
-    List<Grupa> findAll();
-
-    @Override
-    <S extends Grupa> S save(S entity);
-
-    @Override
-    void deleteById(Integer integer);
-
-}
+public interface GrupaRepository extends JpaRepository<Grupa, Integer> {
+  }

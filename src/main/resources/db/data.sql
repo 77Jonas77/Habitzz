@@ -37,19 +37,19 @@ INSERT INTO uzytkownik_grupa (uzytkownik_id, grupa_id, data_dolaczenia, nazwa_uz
 VALUES (1, 2, '2024-12-29', 'Jan Kowalski - Testing group');
 
 -- Wstawienie nawyków
-INSERT INTO nawyk (nazwa, czestotliwosc, data_rozpoczecia, jednostka_czasu_id, interwal, opis)
-VALUES ('Physical exercise', 3, '2024-12-29', 1, 7, 'Physical exercise 3 times a week');
-INSERT INTO nawyk (nazwa, czestotliwosc, data_rozpoczecia, jednostka_czasu_id, interwal, opis)
-VALUES ('Reading books', 1, '2024-12-29', 2, 30, 'Reading books for 30 days');
+INSERT INTO nawyk (nazwa, czestotliwosc, jednostka_czasu_id, interwal, opis)
+VALUES ('Physical exercise', 3, 1, 7, 'Physical exercise 3 times a week');
+INSERT INTO nawyk (nazwa, czestotliwosc, jednostka_czasu_id, interwal, opis)
+VALUES ('Reading books', 1, 2, 30, 'Reading books for 30 days');
 
 -- Wstawienie przypisania nawyków do użytkowników
-INSERT INTO nawyk_uzytkownik (uzytkownik_id, nawyk_id, data_zakonczenia)
-VALUES (3, 1, NULL);
-INSERT INTO nawyk_uzytkownik (uzytkownik_id, nawyk_id, data_zakonczenia)
-VALUES (1, 2, NULL);
+INSERT INTO nawyk_uzytkownik (uzytkownik_id, nawyk_id, data_rozpoczecia)
+VALUES (3, 1, '2024-12-29');
+INSERT INTO nawyk_uzytkownik (uzytkownik_id, nawyk_id, data_rozpoczecia)
+VALUES (1, 2, '2024-12-29');
 
 -- Wstawienie przypisania nawyków do grup
-INSERT INTO nawyk_grupa (nawyk_id, grupa_id, data_zakonczenia)
-VALUES (1, 1, NULL);
-INSERT INTO nawyk_grupa (nawyk_id, grupa_id, data_zakonczenia)
-VALUES (2, 2, NULL);
+INSERT INTO nawyk_grupa (nawyk_id, grupa_id, data_rozpoczecia)
+VALUES (1, 1, '2024-12-29');
+INSERT INTO nawyk_grupa (nawyk_id, grupa_id, data_rozpoczecia)
+VALUES (2, 2, '2024-12-29');

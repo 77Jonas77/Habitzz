@@ -1,4 +1,4 @@
-package jns.sjk.Habitzz.Models.Entity;
+package jns.sjk.Habitzz.Models.Entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -15,6 +15,7 @@ import java.util.List;
 @Table(name = "uzytkownik", schema = "HabitzzDb")
 public class Uzytkownik {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -49,10 +50,15 @@ public class Uzytkownik {
     @ManyToMany(mappedBy = "uzytkownicy")
     private List<Nawyk> nawyki;
 
-    @ManyToMany
+    @OneToOne(mappedBy = "uzytkownikMenadzer", cascade = CascadeType.REMOVE)
+    private Menadzer menadzer;
+
+    @ManyToMany()
     @JoinTable(name = "uzytkownik_grupa",
             joinColumns = @JoinColumn(name = "uzytkownik_id"),
             inverseJoinColumns = @JoinColumn(name = "grupa_id"))
     private List<Grupa> grupy;
 
+    @OneToOne(mappedBy = "uzytkownikAdmin", cascade = CascadeType.REMOVE)
+    private Administrator administrator;
 }

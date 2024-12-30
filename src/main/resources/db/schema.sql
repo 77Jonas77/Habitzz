@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-12-29 23:14:52.382
+-- Last modification date: 2024-12-29 23:47:53.342
 
 -- tables
 -- Table: administrator
@@ -14,7 +14,7 @@ CREATE TABLE grupa (
                        id int  NOT NULL AUTO_INCREMENT,
                        menadzer_id int  NOT NULL,
                        data_utworzenia date  NOT NULL,
-                       opis varchar(200)  NULL,
+                       opis nvarchar(200)  NULL,
                        CONSTRAINT grupa_pk PRIMARY KEY (id)
 );
 
@@ -37,7 +37,6 @@ CREATE TABLE nawyk (
                        id int  NOT NULL AUTO_INCREMENT,
                        nazwa nvarchar(50)  NOT NULL,
                        czestotliwosc int  NOT NULL,
-                       data_rozpoczecia date  NOT NULL,
                        jednostka_czasu_id int  NOT NULL,
                        interwal int  NOT NULL,
                        opis varchar(100)  NULL,
@@ -48,6 +47,7 @@ CREATE TABLE nawyk (
 CREATE TABLE nawyk_grupa (
                              nawyk_id int  NOT NULL,
                              grupa_id int  NOT NULL,
+                             data_rozpoczecia date  NOT NULL,
                              data_zakonczenia date  NULL,
                              CONSTRAINT nawyk_grupa_pk PRIMARY KEY (nawyk_id,grupa_id)
 );
@@ -57,6 +57,7 @@ CREATE TABLE nawyk_uzytkownik (
                                   uzytkownik_id int  NOT NULL,
                                   nawyk_id int  NOT NULL,
                                   data_zakonczenia date  NULL,
+                                  data_rozpoczecia date  NOT NULL,
                                   CONSTRAINT nawyk_uzytkownik_pk PRIMARY KEY (uzytkownik_id,nawyk_id)
 );
 
